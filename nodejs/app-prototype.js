@@ -29,10 +29,10 @@ db_connector.open(function(err, db) {
 				// Add some geo sugar
 				verklaring.geolocation = {"lat":51.917368, "lng":4.484805};
 
-				// Sla die ding op G!
+				// Save the record
 				collection.insert(verklaring);
 
-				// BUFFEL. DAAGH.
+				// Clear the buffer
 				buff = "";
 			}
 		});
