@@ -1,0 +1,17 @@
+{
+  "name": "http-server",
+  "version": "0.0.1",
+  "author": "Tiemen <0834882@hr.nl>",
+  "description": "Demonstrator for our DevThis-project",
+  "contributors": [ 
+    {
+      "name": "Tiemen Waterreus",
+      "email": "tiemen@tiemenwaterreus.com.com"
+    } 
+  ],
+  "dependencies" : {
+    "express"   :  "*",
+    "serialport" :  "*",
+    "mongodb" :  "*"
+  }
+}
