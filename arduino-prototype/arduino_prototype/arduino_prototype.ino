@@ -104,13 +104,14 @@ void loop() {
 //      detected++;
 //      Serial.println(detected);
       Serial.print("{\"delta_x\": "+String(delta_x)+", \"delta_y\":"+String(delta_y)+",\"delta_z\": "+String(delta_z)+"}");
+      Serial.flush();
     }
     
     px = gx;
     py = gy;
     pz = gz;
 
-    delay(20); 
+    delay(100);
 
 }
 
