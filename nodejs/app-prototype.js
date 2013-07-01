@@ -1,15 +1,15 @@
-var express = require('express');
-var fs = require('fs');
-var app = express();
-
+var express 	 = require('express');
+var fs 				 = require('fs');
 var SerialPort = require("serialport").SerialPort
-var serialPort = new SerialPort("/dev/tty.usbmodem411", {
+var app 			 = express();
+
+var serialPort = new SerialPort("/dev/cu.usbmodem24111", {
 	baudrate: 38400
 });
 
-var mongodb = require("mongodb"),
-    mongoserver = new mongodb.Server('localhost', mongodb.Connection.DEFAULT_PORT, true),
-    db_connector = new mongodb.Db('DevThis', mongoserver, 5);
+var mongodb 			= require("mongodb"),
+    mongoserver 	= new mongodb.Server('localhost', mongodb.Connection.DEFAULT_PORT, true),
+    db_connector 	= new mongodb.Db('DevThis', mongoserver, 5);
 
 db_connector.open(function(err, db) {
 
@@ -41,7 +41,6 @@ db_connector.open(function(err, db) {
 	app.get('/roaddata.json', function(req, res) {
 
 		collection.find().toArray(function(err, items){
-			console.log(find);
 			res.json(items);
 		});
 	});
