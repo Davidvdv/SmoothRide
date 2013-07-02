@@ -14,8 +14,7 @@
 	function initialize() {
 
 		var mapOptions = {
-			zoom: 18,
-			//51.917368, "lng":4.484805
+			zoom: 17,
 			center: new google.maps.LatLng(51.917368, 4.484805),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -24,22 +23,21 @@
 
 		$.getJSON('/roaddata.json', function(data) {
 			console.log(data);
-			for (var i = data.length - 1; i >= 0; i--) {
-				var json = data[i];
-				var marker = new google.maps.Marker({
-					position: mapOptions.center,
-					map: map,
-					title: 'SmoothRide'
-				});
 
-				var infowindow = new google.maps.InfoWindow({
-				      content: '<h3>Registratie</h3><p style="text-align:center;">Totaal aantal registraties op deze locatie:<br /><strong>'+data.length+'</strong></p>'
-				});
+			var geolocation = data[0].geolocation;
+				
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(geolocation.lat, geolocation.lng),
+				map: map
+			});
 
-				google.maps.event.addListener(marker, 'click', function() {
-				    infowindow.open(map,marker);
-				 });
-			}
+			var infowindow = new google.maps.InfoWindow({
+				content: '<h3>Registratie</h3><p style="text-align:center;">Totaal aantal registraties op deze locatie:<br /><strong>'+data.length+'</strong></p>'
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map,marker);
+			});
 		});
 	}
 
